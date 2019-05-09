@@ -1,0 +1,24 @@
+working on htem cli ruby gem
+
+how to build it
+
+
+
+a CLI for htem,with htem website
+
+user types in htem
+
+show a list of article :
+  1- name - location - price
+  2- name- location - price
+  3- name- location - prince
+
+select an article or exit
+
+1
+
+		name
+		description
+		location
+		prix
+		vendeur  
