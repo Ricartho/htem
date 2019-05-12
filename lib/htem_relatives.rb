@@ -1,4 +1,5 @@
-#require "htem/version"
+require 'bundler/setup'
+Bundler.require(:default)
 require_relative "./htem/version"
 require_relative "./htem/cli"
 
