@@ -17,14 +17,4 @@ def self.create_from_collection(article_array)
 def self.all
   @@all
 end
-
-  #  def self.list_article
-  #
-  #   	puts <<-DOC.gsub /^\s*/, ''
-  #   		1- name - location - price
-  #   		2- name - location - price
-  #   		3- name - location - price
-  #   	DOC
-  #   end
-
 end
