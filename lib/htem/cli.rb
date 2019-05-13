@@ -27,8 +27,10 @@ class Htem::Cli
       puts"Select a article by his number for more details,type List to see the list again or type Exit"
       choice = gets.strip.downcase
 
-        if choice.to_i > 0
-           puts @resultat[choice.to_i - 1]
+        if choice.to_i > 0 && choice.to_i <= @resultat.length
+           article = @resultat[choice.to_i - 1]
+           puts "Title : #{article.name}"
+        
          elsif choice == "list"
            list
          else
