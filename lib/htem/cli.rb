@@ -1,11 +1,13 @@
 class Htem::Cli
 
   def run
-    list
+    #list
   end
 
-     def list
-       Htem::Article.list_article
-     end
+    #  def list
+    # 	 puts "Welcome to Htem "
+    #    puts "Here is the list of our available articles :"
+    #    Htem::Article.list_article
+    #  end
 
 end
