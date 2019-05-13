@@ -11,12 +11,14 @@ class Htem::Cli
     Htem::Article.create_from_collection(article_array)
   end
 
-     def list
-          number = 1
-         Htem::Article.all.each do |article|
-         puts "#{number} - #{article.name},at #{article.infos}"
-         number += 1
+  def list
+    puts "Welcome to Htem"
+    puts "Here's the list of our available articles : "
+    number = 1
+    Htem::Article.all.each do |article|
+    puts "#{number} - #{article.name},at #{article.infos}"
+    number += 1
        end
-     end
+  end
 
 end
