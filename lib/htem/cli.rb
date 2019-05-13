@@ -17,7 +17,7 @@ class Htem::Cli
     puts "Here's the list of our available articles : "
     @resultat = Htem::Article.all
     @resultat.each.with_index(1) do |article,index|
-      puts "#{index} - #{article.name},at #{article.infos}"
+      puts "#{index} - #{article.price},at #{article.infos}"
     end
   end
 
@@ -30,7 +30,7 @@ class Htem::Cli
         if choice.to_i > 0 && choice.to_i <= @resultat.length
            article = @resultat[choice.to_i - 1]
            puts "Title : #{article.name}"
-        
+
          elsif choice == "list"
            list
          else
