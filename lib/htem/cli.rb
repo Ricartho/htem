@@ -4,7 +4,7 @@ class Htem::Cli
   def run
     create_article
     list
-    #menu
+    menu
   end
 
   def create_article
@@ -26,6 +26,14 @@ class Htem::Cli
       while choice != "exit"
       puts"Select a article by his number for more details,type List to see the list again or type Exit"
       choice = gets.strip.downcase
+
+        if choice.to_i > 0
+           puts @resultat[choice.to_i - 1]
+         elsif choice == "list"
+           list
+         else
+           puts "Wrong option,Select a article by his number for more details,type List to see the list again or type Exit"
+        end
       end
   end
 
