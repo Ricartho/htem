@@ -3,6 +3,7 @@ class Htem::Cli
 
   def run
     create_article
+    update_article
     list
     menu
   end
@@ -10,6 +11,13 @@ class Htem::Cli
   def create_article
     article_array = Htem::Scraper.scrape_index_page
     Htem::Article.create_from_collection(article_array)
+  end
+
+  def update_article
+    Htem::Article.all.each do |article|
+        attributes = Htem::Scraper.scrape_specific_article(article.url_article)
+        Htem::Article..update_article_attributes(attributes)
+    end
   end
 
   def list
