@@ -4,6 +4,7 @@ class Htem::Cli
   def run
     create_article
     list
+    #menu
   end
 
   def create_article
@@ -14,11 +15,18 @@ class Htem::Cli
   def list
     puts "Welcome to Htem"
     puts "Here's the list of our available articles : "
-    number = 1
-    Htem::Article.all.each do |article|
-    puts "#{number} - #{article.name},at #{article.infos}"
-    number += 1
-       end
+    @resultat = Htem::Article.all
+    @resultat.each.with_index(1) do |article,index|
+      puts "#{index} - #{article.name},at #{article.infos}"
+    end
+  end
+
+  def menu
+      choice = nil
+      while choice != "exit"
+      puts"Select a article by his number for more details,type List to see the list again or type Exit"
+      choice = gets.strip.downcase
+      end
   end
 
 end
