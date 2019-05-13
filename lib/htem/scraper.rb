@@ -1,9 +1,10 @@
 require 'open-uri'
+require 'nokogiri'
 class Htem::Scraper
 
   # this method is responsible for scraping the index page that lists all of the articles on Htem webpage
-  def self.scrape_index_page(page_url)
-    doc = Nokogiri::HTML(open("page_url"))
+  def self.scrape_index_page
+    doc = Nokogiri::HTML(open("http://htem.000webhostapp.com/index.php"))
     articles = []
     doc.css(".portfolio").each do |article|
       title = article.css(".title-wrap h5").text

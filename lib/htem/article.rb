@@ -1,6 +1,7 @@
 class Htem::Article
+
    attr_accessor :name,:infos,:url
-@@all =[]
+   @@all =[]
 
 def initialize(article_hash)
 @name = article_hash[:name]
@@ -10,11 +11,11 @@ def initialize(article_hash)
 end
 
 def self.create_from_collection(article_array)
-     article_array.map {|article| Article.new(article)}
+     article_array.map {|article| Htem::Article.new(article)}
   end
 
 def self.all
- @@all
+  @@all
 end
 
   #  def self.list_article
