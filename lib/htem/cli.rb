@@ -16,7 +16,7 @@ class Htem::Cli
   def update_article
     Htem::Article.all.each do |article|
         attributes = Htem::Scraper.scrape_specific_article(article.url_article)
-        Htem::Article..update_article_attributes(attributes)
+        Htem::Article.update_article_attributes(attributes)
     end
   end
 
@@ -25,7 +25,7 @@ class Htem::Cli
     puts "Here's the list of our available articles : "
     @resultat = Htem::Article.all
     @resultat.each.with_index(1) do |article,index|
-      puts "#{index} - #{article.price},at #{article.infos}"
+      puts "#{index} - #{article.name},at #{article.url_article}"
     end
   end
 
