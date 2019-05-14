@@ -3,7 +3,7 @@ class Htem::Cli
 
   def run
     create_article
-    update_article
+    #update_article
     list
     menu
   end
@@ -13,22 +13,26 @@ class Htem::Cli
     Htem::Article.create_from_collection(article_array)
   end
 
-  def update_article
-    Htem::Article.all.each do |article|
-        attributes = Htem::Scraper.scrape_specific_article(article.url_article)
-        Htem::Article.update_article_attributes(attributes)
-    end
-  end
+  # def update_article
+  #   Htem::Article.all.each do |article|
+  #       attributes = Htem::Scraper.scrape_specific_article(article.url_article)
+  #       Htem::Article.update_article_attributes(attributes)
+  #   end
+  # end
 
   def list
     puts "Welcome to Htem"
     puts "Here's the list of our available articles : "
     @resultat = Htem::Article.all
     @resultat.each.with_index(1) do |article,index|
-      puts "#{index} - #{article.name},at #{article.url_article}"
+      puts "#{index} - #{article.name},at #{article.infos}"
     end
   end
-
+  def exitApp
+   puts "Loading..."
+   sleep 2
+   puts "CLI application closed"
+  end
   def menu
       choice = nil
       while choice != "exit"
@@ -37,10 +41,13 @@ class Htem::Cli
 
         if choice.to_i > 0 && choice.to_i <= @resultat.length
            article = @resultat[choice.to_i - 1]
+           sleep 1
            puts "Title : #{article.name}"
 
          elsif choice == "list"
            list
+         elsif choice == "exit"
+           exitApp
          else
            puts "Wrong option,Select a article by his number for more details,type List to see the list again or type Exit"
         end

@@ -23,13 +23,13 @@ class Htem::Scraper
 
   # this method is responsible for scraping specific articles from Htem webpage
       def self.scrape_specific_article(article_url)
-        doc = Nokogiri::HTML(open('http://htem.000webhostapp.com/' + article_url))
-        article = {}
-        #article[:name] = doc.css(".libele").text
-        article[:description] = doc.css(".description").text
-        article[:location] = doc.css(".small.location").text
-        article[:price] = doc.css(".small.price").text
-        article[:owner] = doc.css(".owner").text
-        article
+        doc = Nokogiri::HTML(open("http://htem.000webhostapp.com/"+ article_url))
+          article = {}
+          article[:name] = doc.css(".libele").text
+          article[:description] = doc.css(".description").text
+          article[:location] = doc.css(".small.location").text
+          article[:price] = doc.css(".small.price").text
+          article[:owner] = doc.css(".owner").text
+          article
       end
 end
