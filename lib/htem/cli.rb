@@ -1,24 +1,16 @@
 require "./lib/htem_relatives"
 class Htem::Cli
-
+#class responsible for action of the users
   def run
-    create_article
-    #update_article
-    list
-    menu
+    create_article #create articles using article class
+    list #list all the articles
+    menu #show the menu
   end
 
   def create_article
     article_array = Htem::Scraper.scrape_index_page
     Htem::Article.create_from_collection(article_array)
   end
-
-  # def update_article
-  #   Htem::Article.all.each do |article|
-  #       attributes = Htem::Scraper.scrape_specific_article(article.url_article)
-  #       Htem::Article.update_article_attributes(attributes)
-  #   end
-  # end
 
   def list
     puts "Welcome to Htem"
@@ -28,11 +20,8 @@ class Htem::Cli
       puts "#{index} - #{article.name},at #{article.infos}"
     end
   end
-  def exitApp
-   puts "Loading..."
-   sleep 2
-   puts "CLI application closed"
-  end
+
+
   def menu
       choice = nil
       while choice != "exit"
@@ -41,8 +30,13 @@ class Htem::Cli
 
         if choice.to_i > 0 && choice.to_i <= @resultat.length
            article = @resultat[choice.to_i - 1]
+           article_specific = Htem::Scraper.scrape_specific_article(article.url_article)
            sleep 1
-           puts "Title : #{article.name}"
+           puts "Title : #{article_specific[:name]}"
+           puts "Description : #{article_specific[:description]}"
+           puts "Available at : #{article_specific[:location]}"
+           puts "Price : #{article_specific[:price]}"
+           puts "Seller infos : #{article_specific[:owner]}"
 
          elsif choice == "list"
            list
@@ -53,5 +47,12 @@ class Htem::Cli
         end
       end
   end
+
+
+    def exitApp
+     puts "Loading..."
+     sleep 2
+     puts "CLI application closed"
+    end
 
 end

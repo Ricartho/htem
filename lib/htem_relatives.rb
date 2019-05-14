@@ -1,3 +1,4 @@
+#contain all the relations between files
 require 'bundler/setup'
 Bundler.require(:default)
 require_relative "./htem/version"
